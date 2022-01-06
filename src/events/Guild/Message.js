@@ -1,5 +1,8 @@
 const ms = require('ms')
 
+var e = new Error('Could not parse input');
+// e.message is 'Could not parse input'
+
 module.exports = {
     name: 'message',
     run: async(client, message) => {
