@@ -17,6 +17,8 @@ const client = new Discord.Client({
 
 client.commands = new Collection();
 client.events = new Collection();
+client.cooldowns = new Collection();
+client.aliases = new Collection();
 
 ;(async() => {
     const eventFiles = await globPromise(`${__dirname}/events/**/*.js`);
@@ -30,6 +32,9 @@ client.events = new Collection();
     commandFiles.map((value) => {
         const file = require(value);
         client.commands.set(file.name, file);
+        if(file.aliases) {
+            file.aliases.map((value) => client.aliases.set(value, file.name));
+        };
     });
 
 })();
