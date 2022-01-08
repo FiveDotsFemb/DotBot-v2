@@ -41,6 +41,10 @@ client.aliases = new Collection();
 const PREFIX = "dot!";
 const generateImage = require("./generateImage");
 
+const messages = ["Bottom", "Top",]
+const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+
 // prefix
 client.on('messageCreate', async (msg) => {
     if (!msg.content.startsWith(PREFIX)) return;
@@ -56,6 +60,15 @@ client.on('messageCreate', async (msg) => {
             .setTimestamp()
         msg.reply({embeds: [embed]});    
     }
+// top or bottom
+    if (command === 'toporbot') {
+         const toporbot = [
+            '**Top**',
+            '**Bottom**',
+    ];
+        const response = toporbot[Math.floor(Math.random() * toporbot.length)];
+         msg.reply(`You are a ${response}`);
+    }
 // member count
     if (command === 'members') {
         msg.reply(`There are ${msg.guild.memberCount} members in this server`)
@@ -64,12 +77,33 @@ client.on('messageCreate', async (msg) => {
     if (command === 'invite') {
         msg.reply(`https://discord.gg/X2s6Uv8Pgc`)
     }
+// garfeld
+    if (command === 'garfield') {
+    msg.reply(`https://images-ext-1.discordapp.net/external/DtxjJdge_Cxj2keMcsNM1hfI9Zh2MMtbwEaUNf9Ewzw/https/i.imgur.com/XJw9aAv.mp4`)
+}
+// ya like jazz?
+    if (command === 'yalikejazz?') {
+    msg.reply(`https://c.tenor.com/mPe_dMpYInoAAAAC/tucoemuitolegal-bee-movie.gif`)
+}
+// yapein
+    if (command === 'yapein') {
+    msg.reply(`https://images-ext-2.discordapp.net/external/Y05HYXaBSeJeIEbN-6HsB0kdj6k__5QKRn_TJRxHp8U/%3Fsize%3D128/https/cdn.discordapp.com/emojis/925538276989886484.gif`)
+}
 // poll command
     if (command === 'poll') {
         let message = await msg.reply(args.join(' '));
         await message.react('✅');
         await message.react('❌');
     }
+// help (doesnt work lol)
+    if (command === 'help') {
+    const embed = new Discord.MessageEmbed()
+        .setTitle('Help')
+        .setColor('#FF33AC')
+        .setDescription('Available commands:')
+        .setTimestamp()
+    msg.reply({embeds: [embed]});    
+}
 })
 
 const welcomeChannelId = (config.CHANNEL)
@@ -86,5 +120,5 @@ client.login(config.token)
 
 client.on("ready", () => {
     console.log(`Bot: Hosting ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-    client.user.setActivity(`Drain GANGG`);
+    client.user.setActivity(`dot!`);
   });

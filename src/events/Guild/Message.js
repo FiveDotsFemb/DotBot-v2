@@ -22,7 +22,6 @@ module.exports = {
                 }, command.cooldown);
             }
         } catch {
-            return message.channel.send(`An error occurred: \`${e.message}\``);
         }
     }
 };
