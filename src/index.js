@@ -63,11 +63,16 @@ client.on('messageCreate', async (msg) => {
 // top or bottom
     if (command === 'toporbot') {
          const toporbot = [
-            '**Top**',
-            '**Bottom**',
+            'You are a **Top**',
+            'You are a **Bottom**',
+            'You might just be a **Bottom**',
+            'You might just be a **Top**',
+            'You act like a **Top**, but we all know you are a **Bottom**',
+            'You act like a **Bottom**, but we all know you are a **Top**',
+            'You probably like to switch it around ;)',
     ];
         const response = toporbot[Math.floor(Math.random() * toporbot.length)];
-         msg.reply(`You are a ${response}`);
+         msg.reply(response);
     }
 // member count
     if (command === 'members') {
